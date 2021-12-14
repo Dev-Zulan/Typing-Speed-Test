@@ -95,13 +95,13 @@ while(True):
         return print("Your got (" + stars + ")" + " star" + ("s" if len(stars) > 1 else "") + ", " + random_message[rating-1][randint(0, 2)])
 
     def get_rating():
-        if tpw <= 1 and (accuracy_percentage) == 100:
+        if tpw <= 1 and accuracy_percentage == 100:
             rating_message(5)
-        elif (tpw > 1 and tpw <= 3) and (accuracy_percentage) == 100:
+        elif tpw > 1 and tpw <= 3 and accuracy_percentage == 100:
             rating_message(4)
-        elif (tpw > 1 and tpw <= 5) and (accuracy_percentage) > 90:
+        elif tpw > 1 and tpw <= 5 and accuracy_percentage > 90:
             rating_message(3)
-        elif (tpw > 1 and tpw <= 10) and (accuracy_percentage) >= 75:
+        elif tpw > 1 and tpw <= 10 and accuracy_percentage >= 75:
             rating_message(2)
         else:
             rating_message(1)
