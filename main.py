@@ -78,13 +78,14 @@ while(True):
     tpw = round((float(_time) / word_count), 2)
     tpl = round((float(_time) / (len(generated_words) - word_count)), 2)
     accuracy = round((((len(generated_words) - word_count) - (Levenshtein.distance(user_input, generated_words) - 1)) / (len(generated_words) - word_count)), 2)
+    accuracy_percentage = accuracy * 100
 
     print("\nNumber of words: " + str(word_count))
     print("Number of letters: " + str(len(generated_words) - word_count))
     print("Time: " + _time + "s")
     print("Time / Word: " + str(tpw) + "s")
     print("Time / Letter: " + str(tpl) + "s")
-    print("Accuracy: " + str(accuracy * 100) + "%")
+    print("Accuracy: " + str(accuracy_percentage) + "%")
 
     def rating_message(rating):
         random_message = [
@@ -101,13 +102,13 @@ while(True):
         return print("Your got (" + stars + ")" + " star" + ("s" if len(stars) > 1 else "") + ", " + random_message[rating-1][randint(0, 2)])
 
     def get_rating():
-        if tpw <= 1 and (accuracy * 100) == 100:
+        if tpw <= 1 and (accuracy_percentage) == 100:
             rating_message(5)
-        elif tpw <= 3 and tpw > 1 and (accuracy * 100) == 100:
+        elif (tpw > 1 and tpw <= 3) and (accuracy_percentage) == 100:
             rating_message(4)
-        elif ((tpw <= 5 and tpw > 3) or (tpw <= 3 and tpw > 1)) and (accuracy * 100) > 90:
+        elif (tpw > 1 and tpw <= 5) and (accuracy_percentage) > 90:
             rating_message(3)
-        elif ((tpw <= 10 and tpw > 5) or ((tpw <= 5 and tpw > 3) or (tpw <= 3 and tpw > 1))) and (accuracy * 100) >= 75:
+        elif (tpw > 1 and tpw <= 10) and (accuracy_percentage) >= 75:
             rating_message(2)
         else:
             rating_message(1)
